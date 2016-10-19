@@ -13,11 +13,13 @@ public class JlineExample {
     public static void main(String[] args) throws IOException {
         System.setProperty("jline.internal.Log.debug", "true");
         System.setProperty("jline.WindowsTerminal.directConsole", "false");
+        System.setProperty("jline.inputrc", "d:/.jline.rc");
         ConsoleReader reader = new ConsoleReader();
+
         Completer completer = new StringsCompleter(new String[]{"myabc",
                 "mybcd", "testaaa", "tesss"});
         reader.addCompleter(completer);
-        String line = null;
+        String line;
         do {
             line = reader.readLine(">");
             if (line != null && !line.equals("quit")) {
